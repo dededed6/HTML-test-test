@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>홀로라이브 MBTI 테스트</title>
+        <style>
+            @font-face {
+                font-family : '굵';
+                src : url(fonts/NanumSquareEB.ttf);
+            }
+          </style>
+    </head>
+
+    <SCRIPT LANGUAGE='JAVASCRIPT'>
+        var messages =
+        [{q:"홀로라이브는 주로 이걸로 보고있지!", f:"키리누키 클립들", s:"생방송/아카이브"},
+        {q:"역시 이런 방송이 보기편해!", f:"잔잔하고 딴거하기 좋은 방송", s:"시끄럽고 활기찬 방송"}];
+        var weight = 
+        [[0,0,0],
+        [0,0,0],
+        [0,0,0]]
+
+        function clickk(i,ii)
+        {
+            weight[i][ii]++;
+            next(i);
+        }
+
+        function next(quiz_num)
+        {
+            quiz_num++;
+            document.getElementsByClassName('container')[quiz_num].style.display = "block";
+            const target_top = document.getElementsByClassName('container')[quiz_num].offsetTop;
+            window.scroll({top : target_top, behavior: 'smooth'});
+            
+        }
+    </SCRIPT>
+
+    <body bgcolor="#25232e">
+        <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; ">
+          <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%;">1/9</p>
+           <div style="text-align: center;padding: 0;">
+              <!--일단 1.게임취향 2.잡담/우타와꾸/게임 3.연상/연하 4.잔잔/산만 5.-->
+               <p style="font-family:굵;color: white;font-size:6.5vw;letter-spacing:-0.3vw; margin-top: 4vh;margin-bottom: 20vh;">
+                   <span class="txt" style="padding-top: 0;" >홀로라이브는 이걸로 보고있지!</span>
+               </p>
+               <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(0,0)">키리누키 클립</button>
+               <p style="font-size: 6vh;"> </p>
+                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(0,1)">생방송/녹화본</button>
+                <p style="font-size: 6vh;"> </p>
+                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(0,2)">둘 다 본다</button>
+            </div>
+        </div>
+
+        <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
+            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%;">2/9</p>
+             <div style="text-align: center;padding: 0;">
+                 <p style="font-family:굵;color: white;font-size:6.5vw;letter-spacing:-0.3vw; margin-top: 4vh;margin-bottom: 20vh;">
+                     <span style="padding-top: 0;" >이런 게임이 보고싶어!</span>
+                 </p>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(1,0)">FPS/총게임</button>
+                 <p style="font-size: 6vh;"> </p>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(1,1)">싱글게임</button>
+                  <p style="font-size: 6vh;"> </p>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(1,2)">온라인게임</button>
+              </div>
+          </div>
+
+          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
+            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%;">3/9</p>
+             <div style="text-align: center;padding: 0;">
+                 <p style="font-family:굵;color: white;font-size:6.5vw;letter-spacing:-0.3vw; margin-top: 4vh;margin-bottom: 20vh;">
+                     <span style="padding-top: 0;" >이런 방송이 좋아!</span>
+                 </p>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2,0)">잡담/소통 방송</button>
+                 <p style="font-size: 6vh;"> </p>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2,1)">게임 방송</button>
+                  <p style="font-size: 6vh;"> </p>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 4vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2    ,2)">기획 방송(etx.요리)</button>
+              </div>
+          </div>
+
+
+
+          <style>
+              body{
+ -ms-overflow-style: none;
+ }
+ 
+::-webkit-scrollbar {
+  display: none;
+}
+          </style>
+    </body>
+</html>
