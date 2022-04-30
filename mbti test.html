@@ -41,6 +41,10 @@
 
         function next(quiz_num)
         {
+            if(quiz_num==0)
+            {
+                window.location.href = 'takanelui.html';
+            }
             quiz_num++;
             document.getElementsByClassName('container')[quiz_num].style.display = "block";
             const target_top = document.getElementsByClassName('container')[quiz_num].offsetTop;
