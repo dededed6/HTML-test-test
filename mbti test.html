@@ -28,6 +28,10 @@
 
         function clickk(i,ii)
         {
+            if(i==9)
+            {
+                window.location.href = './takanelui.html';
+            }
             for(var iii=0;iii<4;iii++)
             {
                 weight[i][iii]=0;
@@ -41,15 +45,10 @@
 
         function next(quiz_num)
         {
-            if(quiz_num==9)
-            {
-                window.location.href = 'takanelui.html';
-            }
             quiz_num++;
             document.getElementsByClassName('container')[quiz_num].style.display = "block";
             const target_top = document.getElementsByClassName('container')[quiz_num].offsetTop;
             window.scroll({top : target_top, behavior: 'smooth'});
-            
         }
     </SCRIPT>
 
@@ -206,6 +205,7 @@
                   <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(9,2)">상관없어</button>
               </div>
           </div>
+          
 
           <style>
               body{
