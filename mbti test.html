@@ -28,7 +28,14 @@
 
         function clickk(i,ii)
         {
-            weight[i][ii]++;
+            for(var iii=0;iii<4;iii++)
+            {
+                weight[i][iii]=0;
+                if(iii==ii)
+                {
+                    weight[i][ii]=1;
+                }
+            }
             next(i);
         }
 
@@ -43,60 +50,71 @@
     </SCRIPT>
 
     <body bgcolor="#25232e">
-        <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; ">
+        <!--
+            1. 키리누키
+            2. 게임 취향
+            3. 방송 취향
+            4. 연상 연하
+            5. 언어
+            6. 콜라보
+            7. 시끌 잔잔
+            8. 인싸/게닌/아싸
+            9. 목소리 톤
+            -->
+        <!--1번 질문-->
+        <div class="container" style="width:98vw; height:98vh; margin: auto; padding: 0%; ">
           <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%;">아직 9개나 남았습니다</p>
            <div style="text-align: center;padding: 0;">
-              <!--일단 1.게임취향 2.잡담/우타와꾸/게임 3.연상/연하 4.잔잔/산만 5.-->
                <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
                    <span class="txt" style="padding-top: 0;" >홀로라이브는 이걸로 보고있지!</span>
                </p>
-               <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(0,0)">키리누키 클립</button>
+               <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(0,0)">키리누키 클립</button>
                <p style="font-size: 6vh;"> </p>
-                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(0,1)">생방송/녹화본</button>
+                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(0,1)">생방송/녹화본</button>
                 <p style="font-size: 6vh;"> </p>
-                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(0,2)">둘 다 본다</button>
+                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(0,2)">둘 다 본다</button>
             </div>
         </div>
-
+        <!--2번 질문-->
         <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">아직 8개나 남았습니다</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
                      <span style="padding-top: 0;" >이런 게임이 보고싶어!</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(1,0)">FPS/총게임</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(1,0)">FPS/총게임</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(1,1)">싱글게임</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(1,1)">싱글게임</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(1,2)">온라인게임</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(1,2)">온라인게임</button>
               </div>
           </div>
-
+          <!--3번 질문-->
           <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">아직 7개나 남았습니다</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
                      <span style="padding-top: 0;" >이런 방송이 좋아!</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2,0)">잡담/소통 방송</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(2,0)">잡담/소통 방송</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2,1)">게임 방송</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(2,1)">게임 방송</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2,2)">기획 방송(etx.요리)</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(2,2)">기획 방송(etc.노래, 요리)</button>
               </div>
           </div>
-
+          <!--4번 질문-->
           <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">이제 6개 남았습니다</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >루이가 너무 좋아!</span>
+                     <span style="padding-top: 0;" >이런 분위기가 제맛이지</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2,0)">아니</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(3,0)">이모가 좋아!(연상)</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(3,1)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(3,1)">응애가 좋아!(연하)</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(2,2)">아니</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(3,2)">나랑 비슷한게 좋아!</button>
               </div>
           </div>
 
@@ -104,13 +122,13 @@
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">이제 5개 남았습니다</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >루이 방송만 볼래!</span>
+                     <span style="padding-top: 0;" >이 언어가 듣고싶어!</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(4,0)">응</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(4,0)">영어</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(4,1)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(4,1)">일본어</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(3,2)">아니</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(4,2)">인도네시아어</button>
               </div>
           </div>
 
@@ -118,13 +136,13 @@
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">이제 4개 남았습니다</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >루이 방송만 볼래!</span>
+                     <span style="padding-top: 0;" >개인 취향입니다만?</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(5,0)">응</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(5,0)">콜라보 방송이 좋아</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(5,1)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(5,1)">혼자하는 방송이 좋아</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(5,2)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(5,2)">'난 둘 다'</button>
               </div>
           </div>
 
@@ -132,13 +150,13 @@
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">3!</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >루이 방송만 볼래!</span>
+                     <span style="padding-top: 0;" >내가 생방송을 보는 방법은..</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(6,0)">응</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(6,0)">다른거 하거나 자면서 보기</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(6,1)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(6,1)">1분 1초 집중해서 보는 편</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(6,2)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(6,2)">키리누키만 보는데요?</button>
               </div>
           </div>
 
@@ -146,13 +164,13 @@
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">2!</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >루이 방송만 볼래!</span>
+                     <span style="padding-top: 0;" >이런 멤버가 좋더라</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(7,0)">응</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(7,0)">항상 활!! 발!!!!</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(7,1)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(7,1)">얘는 그냥 웃김ㅋㅋㅋ</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(7,2)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(7,2)">아싸력 높은 멤버..</button>
               </div>
           </div>
 
@@ -160,13 +178,13 @@
             <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">마지막!</p>
              <div style="text-align: center;padding: 0;">
                  <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >루이 방송만 볼래!</span>
+                     <span style="padding-top: 0;" >역시 목소리도 중요하지</span>
                  </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(8,0)">응</button>
+                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(8,0)">저음이 매력적이야</button>
                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(8,1)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(8,1)">하이톤이 귀엽지</button>
                   <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 10vw; padding-right: 10vw;" onclick="clickk(8,2)">응</button>
+                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(8,2)">어..적당하게 주세요</button>
               </div>
           </div>
 
