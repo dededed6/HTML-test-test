@@ -481,10 +481,15 @@
                                 var num = 100;
                                 for(var ni=0;ni<names.length;ni++)
                                 {
-                                    if(jsonData.rows[i].c[12].v == names[ni])
+                                    try
                                     {
-                                        num = ni;
-                                        break;
+                                        if(jsonData.rows[i].c[12].v == names[ni])
+                                        {
+                                            num = ni;
+                                            break;
+                                        }
+                                    }catch(e) {
+                                        alert("데이터를 불러오는데 실패했습니다!\n테스트를 진행할 수 없습니다!\n오류코드 : "+e+"\n오류코드를 홀로우드 채널에 제보해주세요!");
                                     }
                                 }
                                 if(num==100)
@@ -537,7 +542,7 @@
                               }
                           });
                       });
-                  }
+                }
 
               </SCRIPT>
     </body>
