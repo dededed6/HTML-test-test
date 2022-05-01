@@ -2,45 +2,137 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <title>홀로라이브 취향저격 멤버 찾기!</title>
         <style>
             @font-face {
                 font-family : '굵';
                 src : url(fonts/NanumSquareEB.ttf);
             }
+            .btn {
+                color:#25232e;
+                background-color: white;
+                border-color: transparent;
+                border-radius: 4vw;
+                font-size: 3vw;
+                padding: 1vw;
+                margin-bottom: 6vh;
+                margin-left: 25vw;
+                margin-right: 25vw;
+                width: 50vw;
+                font-family: 굵;
+            }
+            span {
+                display:inline-block;
+                font-family: 굵;
+                color: white;
+                font-size: 5vw;
+                letter-spacing: -0.3vw;
+                margin-bottom: 16vh;
+            }
+            p {
+                text-align: right;
+                font-family: 굵;
+                color: white;
+                font-size: 2vw;
+                margin-top: 0%;
+                margin-bottom: 5vh;
+            }
+            .container {
+                width:100%;
+                height:98vh;
+                padding: 0%;
+                display: none;
+            }
           </style>
     </head>
 
     <SCRIPT LANGUAGE='JAVASCRIPT'>
-        var messages =
-        [{q:"홀로라이브는 주로 이걸로 보고있지!", f:"키리누키 클립들", s:"생방송/아카이브"},
-        {q:"역시 이런 방송이 보기편해!", f:"잔잔하고 딴거하기 좋은 방송", s:"시끄럽고 활기찬 방송"}];
-        var weight = 
-        [[0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]]
+/*
+질문 1번: 0.키리누키 공급 많음 1.적음 2.계산X
+질문 2번: 0.fps 1.싱글 2.멀티
+*/
+        var ans = [0,0,0,0,0,0,0,0,0,0,0,0,"","",""];
+        var nodes = 
+       [[1,1,0,0,0,0,0,0,0,0,0,0], //토키노 소라
+        [1,0,0,0,0,0,0,0,0,0,0,0], //로보코
+        [1,2,0,0,0,0,0,0,0,0,0,0], //아즈키
+        [0,2,0,0,0,0,0,0,0,0,0,0], //미코
+        [0,2,0,0,0,0,0,0,0,0,0,0], //스이
+        [1,1,0,0,0,0,0,0,0,0,0,0], //멜
+        [1,2,0,0,0,0,0,0,0,0,0,0], //아키로제
+        [0,2,0,0,0,0,0,0,0,0,0,0], //하쨔마
+        [0,0,0,0,0,0,0,0,0,0,0,0], //마츠리
+        [0,0,0,0,0,0,0,0,0,0,0,0], //아쿠아
+        [0,1,0,0,0,0,0,0,0,0,0,0], //시온
+        [0,0,0,0,0,0,0,0,0,0,0,0], //아야메
+        [1,2,0,0,0,0,0,0,0,0,0,0], //초코
+        [0,1,0,0,0,0,0,0,0,0,0,0], //스바루
+        [1,1,0,0,0,0,0,0,0,0,0,0], //미오
+        [0,1,0,0,0,0,0,0,0,0,0,0], //오카유
+        [0,1,0,0,0,0,0,0,0,0,0,0], //코로네
+        [1,1,0,0,0,0,0,0,0,0,0,0], //후부키
+        [0,2,0,0,0,0,0,0,0,0,0,0], //페코라
+        [0,1,0,0,0,0,0,0,0,0,0,0], //후레아
+        [0,1,0,0,0,0,0,0,0,0,0,0], //노엘
+        [0,2,0,0,0,0,0,0,0,0,0,0], //마린
+        [0,2,0,0,0,0,0,0,0,0,0,0], //카나타
+        [0,1,0,0,0,0,0,0,0,0,0,0], //코코
+        [0,1,0,0,0,0,0,0,0,0,0,0], //와탓
+        [0,0,0,0,0,0,0,0,0,0,0,0], //토와
+        [1,0,0,0,0,0,0,0,0,0,0,0], //루나
+        [0,0,0,0,0,0,0,0,0,0,0,0], //라미
+        [0,0,0,0,0,0,0,0,0,0,0,0], //네네
+        [1,0,0,0,0,0,0,0,0,0,0,0], //보탄
+        [0,2,0,0,0,0,0,0,0,0,0,0], //폴카
+        [0,0,0,0,0,0,0,0,0,0,0,0], //라프
+        [0,0,0,0,0,0,0,0,0,0,0,0], //루이
+        [1,0,0,0,0,0,0,0,0,0,0,0], //코요리
+        [1,0,0,0,0,0,0,0,0,0,0,0], //클로에
+        [0,0,0,0,0,0,0,0,0,0,0,0], //카자마
+        [1,0,0,0,0,0,0,0,0,0,0,0], //리스
+        [1,0,0,0,0,0,0,0,0,0,0,0], //무나
+        [1,0,0,0,0,0,0,0,0,0,0,0], //이오피
+        [1,0,0,0,0,0,0,0,0,0,0,0], //올리
+        [1,0,0,0,0,0,0,0,0,0,0,0], //아냐
+        [1,0,0,0,0,0,0,0,0,0,0,0], //레이네
+        [0,0,0,0,0,0,0,0,0,0,0,0], //제타
+        [1,0,0,0,0,0,0,0,0,0,0,0], //카엘라
+        [0,0,0,0,0,0,0,0,0,0,0,0], //코보
+        [0,0,0,0,0,0,0,0,0,0,0,0], //칼리
+        [0,0,0,0,0,0,0,0,0,0,0,0], //키아라
+        [0,0,0,0,0,0,0,0,0,0,0,0], //이나
+        [0,0,0,0,0,0,0,0,0,0,0,0], //구라
+        [0,0,0,0,0,0,0,0,0,0,0,0], //왓슨
+        [1,0,0,0,0,0,0,0,0,0,0,0], //아이리스
+        [1,0,0,0,0,0,0,0,0,0,0,0], //사나
+        [0,0,0,0,0,0,0,0,0,0,0,0], //파우나
+        [0,0,0,0,0,0,0,0,0,0,0,0], //크로니
+        [0,0,0,0,0,0,0,0,0,0,0,0], //무메이
+        [0,0,0,0,0,0,0,0,0,0,0]]; //벨즈
 
-        function clickk(i,ii)
+        function clickk(num,index)
         {
-            if(i==9)
+            if(num==12)
             {
-                window.location.href = './takanelui.html';
+                sendData();
+                return true;
             }
-            for(var iii=0;iii<4;iii++)
+            /*
+            for(var i=0; i<nodes.length; i++)
             {
-                weight[i][iii]=0;
-                if(iii==ii)
+                if(nodes[num][i] == index)
                 {
-                    weight[i][ii]=1;
+                    nodes[num][i] == 1;
+                }
+                else
+                {
+                    nodes[num][i] == 0;
                 }
             }
-            next(i);
+            */
+            ans[num] = index;
+            next(num);
         }
 
         function next(quiz_num)
@@ -49,6 +141,25 @@
             document.getElementsByClassName('container')[quiz_num].style.display = "block";
             const target_top = document.getElementsByClassName('container')[quiz_num].offsetTop;
             window.scroll({top : target_top, behavior: 'smooth'});
+        }
+
+        function makeResult()
+        {
+            window.location.href = './takanelui.html';
+        }
+
+        function sendData()
+        {
+            $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbxNyXeUxXW3EXkUGfYtzHL44IYFESgBA38hNmXNpULEFHA8O5tNXGl46NmL0yhkZstafA/exec",
+            data: {
+            num1 : ans[0], num2 : ans[1], num3 : ans[2], num4 : ans[3], num5 : ans[4], num6 : ans[5], num7 : ans[6], num8 : ans[7], num9 : ans[8], num10 : ans[9], num11 : ans[10], num12 : ans[11],
+            num13 : document.getElementById("name").value
+            },
+            type: "POST"
+            });
+            alert("전송 완료!");
+            window.location.href = './takanelui.html';
         }
     </SCRIPT>
 
@@ -64,153 +175,192 @@
             8. 인싸/게닌/아싸
             9. 목소리 톤
             10. 방송 빈도
+            11. 수위
+            12. 노래실력
             -->
         <!--1번 질문-->
-        <div class="container" style="width:98vw; height:98vh; margin: auto; padding: 0%; ">
-          <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%;">아직 9개나 남았습니다</p>
+        <div class="container" style="display: block;">
+          <p>12문제만 더 하면돼요!</p>
            <div style="text-align: center;padding: 0;">
-               <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                   <span class="txt" style="padding-top: 0;" >홀로라이브는 이걸로 보고있지!</span>
-               </p>
-               <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(0,0)">키리누키 클립</button>
-               <p style="font-size: 6vh;"> </p>
-                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(0,1)">생방송/녹화본</button>
-                <p style="font-size: 6vh;"> </p>
-                <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(0,2)">둘 다 본다</button>
+               
+                   <span >홀로라이브는 이걸로 보고있지!</span>
+              
+               <button class="btn"  type="button" onclick="clickk(0,0)">키리누키 클립</button>
+
+                <button class="btn"  type="button" onclick="clickk(0,1)">생방송/녹화본</button>
+ 
+                <button class="btn"  type="button" onclick="clickk(0,2)">상관없다</button>
             </div>
         </div>
         <!--2번 질문-->
-        <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">아직 8개나 남았습니다</p>
+        <div class="container" >
+            <p >앞으로 11문제</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >이런 게임이 보고싶어!</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(1,0)">FPS/총게임</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(1,1)">싱글게임</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(1,2)">온라인게임</button>
+                 
+                     <span >이런 게임이 보고싶어!</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(1,0)">FPS/총게임</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(1,1)">싱글게임</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(1,2)">온라인게임</button>
               </div>
           </div>
           <!--3번 질문-->
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">아직 7개나 남았습니다</p>
+          <div class="container" >
+            <p >앞으로 10문제</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >이런 방송이 좋아!</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(2,0)">잡담/소통 방송</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(2,1)">게임 방송</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(2,2)">기획 방송(etc.노래, 요리)</button>
+                 
+                     <span >이런 방송이 좋아!</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(2,0)">잡담/소통 방송</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(2,1)">게임 방송</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(2,2)">기획 방송(etc.노래, 요리)</button>
               </div>
           </div>
           <!--4번 질문-->
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">이제 6개 남았습니다</p>
+          <div class="container" >
+            <p >앞으로 9문제</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >이런 분위기가 제맛이지</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(3,0)">이모가 좋아!(연상)</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(3,1)">응애가 좋아!(연하)</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(3,2)">나랑 비슷한게 좋아!</button>
+                 
+                     <span >이런 분위기가 제맛이지</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(3,0)">이모가 좋아!(연상)</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(3,1)">응애가 좋아!(연하)</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(3,2)">나랑 비슷한게 좋아!</button>
               </div>
           </div>
 
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">이제 5개 남았습니다</p>
+          <div class="container" >
+            <p >취향저격 멤버까지 8개</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >이 언어가 듣고싶어!</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(4,0)">영어</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(4,1)">일본어</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(4,2)">인도네시아어</button>
+                 
+                     <span >이 언어가 듣고싶어!</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(4,0)">영어</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(4,1)">일본어</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(4,2)">인도네시아어</button>
               </div>
           </div>
 
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">이제 4개 남았습니다</p>
+          <div class="container" >
+            <p >취향저격 멤버까지 7개</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >개인 취향입니다만?</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(5,0)">콜라보 방송이 좋아</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(5,1)">혼자하는 방송이 좋아</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(5,2)">'난 둘 다'</button>
+                 
+                     <span >개인 취향입니다만?</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(5,0)">콜라보 방송이 좋아</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(5,1)">혼자하는 방송이 좋아</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(5,2)">'난 둘 다'</button>
               </div>
           </div>
 
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">3!</p>
+          <div class="container" >
+            <p >취향저격 멤버까지 6개</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >내가 생방송을 보는 방법은..</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(6,0)">다른거 하거나 자면서 보기</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(6,1)">1분 1초 집중해서 보는 편</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(6,2)">키리누키만 보는데요?</button>
+                 
+                     <span >내가 생방송을 보는 방법은..</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(6,0)">다른거 하거나 자면서 보기</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(6,1)">1분 1초 집중해서 보는 편</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(6,2)">키리누키만 보는데요?</button>
               </div>
           </div>
 
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">2!</p>
+          <div class="container" >
+            <p >5개 남았습니다</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >이런 멤버가 좋더라</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(7,0)">항상 활!! 발!!!!</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(7,1)">얘는 그냥 웃김ㅋㅋㅋ</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(7,2)">아싸력 높은 멤버..</button>
+                 
+                     <span >이런 멤버가 좋더라</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(7,0)">항상 활!! 발!!!!</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(7,1)">얘는 그냥 웃김ㅋㅋㅋ</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(7,2)">아싸력 높은 멤버..</button>
               </div>
           </div>
 
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">마지막!</p>
+          <div class="container" >
+            <p >4개 남았습니다</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >역시 목소리도 중요하지</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(8,0)">저음이 매력적이야</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(8,1)">하이톤이 귀엽지</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(8,2)">어..적당하게 주세요</button>
+                 
+                     <span >역시 목소리도 중요하지</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(8,0)">저음이 매력적이야</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(8,1)">하이톤이 귀엽지</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(8,2)">어..적당하게 주세요</button>
               </div>
           </div>
 
-          <div class="container" style="width:98vw; height:100vh; margin: auto; padding: 0%; display: none;">
-            <p style="text-align:right;font-family:굵;color: white;font-size:2vw;margin: 0%; padding-top: 1vh;">속았죠?</p>
+          <div class="container" >
+            <p >3!</p>
              <div style="text-align: center;padding: 0;">
-                 <p style="font-family:굵;color: white;font-size:5vw;letter-spacing:-0.3vw; margin-top: 9vh;margin-bottom: 16vh;">
-                     <span style="padding-top: 0;" >방송은 얼마나 있어야할까?</span>
-                 </p>
-                 <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(9,0)">많을수록 좋아</button>
-                 <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(9,1)">이틀에 한번만 해도돼</button>
-                  <p style="font-size: 6vh;"> </p>
-                  <button class="btn" type="button" style="font-family:굵; color: #25232e; background-color: white; border-color: transparent; border-radius: 4vw; font-size: 3vw; padding: 1vw; padding-left: 06vw; padding-right: 06vw;" onclick="clickk(9,2)">상관없어</button>
+                 
+                     <span >방송은 얼마나 있어야할까?</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(9,0)">많을수록 좋아</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(9,1)">이틀에 한번만 해도돼</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(9,2)">상관없어</button>
               </div>
           </div>
-          
 
+          <div class="container" >
+            <p >2!</p>
+             <div style="text-align: center;padding: 0;">
+                 
+                     <span >매운맛은 이정도면 좋겠어</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(10,0)">불닭볶음면</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(10,1)">진라면</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(10,2)">냉면</button>
+              </div>
+          </div>
+
+          <div class="container" >
+            <p >마지막!</p>
+             <div style="text-align: center;padding: 0;">
+                 
+                     <span >노래 실력은?</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(11,0)">잘부르면 좋지</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(11,1)">적당히 부를줄만 알면돼</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(11,2)">못불러도 재밌으면돼</button>
+              </div>
+          </div>
+
+          <div class="container" style="width:98vw; margin: auto; padding: 0%; display: none;">
+            <p >멤버 선택하기</p>
+             <div style="text-align: center;padding: 0;">
+                
+                    <span >오시멤버는 누구인가요?</span>
+               
+                    <input type="text" id="name" placeholder="최애멤버의 이름을 적어주세요 (etc. 아멜리아 왓슨)" style="margin-bottom: 12vh; height: 8vh; width: 80%; font-family: 굵; font-size: 3vw; text-align: center;">
+                    <input class="btn" type="submit" value="보내기" onclick="clickk(12)"></button>
+            </div>
+          </div>
           <style>
               body{
- -ms-overflow-style: none;
- }
+                -ms-overflow-style: none;
+                }
  
 ::-webkit-scrollbar {
   display: none;
