@@ -376,7 +376,7 @@
                             ci++;
                             numberCount();
                         }
-                  }, (50/(userCount-ci)*50/(userCount-ci)));
+                  }, (10/(userCount-ci)*50/(userCount-ci)));
                 }
 
                 function clickk(num,index)
@@ -494,7 +494,7 @@
                                 {
                                     try
                                     {
-                                        if(jsonData.rows[i].c[12].v == names[ni])
+                                        if(jsonData.rows[i].c[12].v == names[ni] || jsonData.rows[i].c[12].v == names[ni]+" ")
                                         {
                                             num = ni;
                                             break;
