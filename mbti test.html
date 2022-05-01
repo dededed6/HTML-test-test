@@ -150,6 +150,11 @@
 
         function sendData()
         {
+            if(document.getElementById("name").value=="")
+            {
+                alert("멤버 이름을 적어주세요!");
+                return 0;
+            }
             $.ajax({
             url: "https://script.google.com/macros/s/AKfycbxNyXeUxXW3EXkUGfYtzHL44IYFESgBA38hNmXNpULEFHA8O5tNXGl46NmL0yhkZstafA/exec",
             data: {
