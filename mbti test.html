@@ -295,7 +295,6 @@
           질문 2번: 0.fps 1.싱글 2.멀티
           */
                   var ans = [0,0,0,0,0,0,0,0,0,0,0,0,0,""];
-                  var isClicked = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
                   var userCount = 500;
                   var nodes = 
                  [[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],0], //토키노 소라
@@ -412,17 +411,7 @@
                     }
                     for(var i=0; i<nodes.length; i++)
                     {
-                        if(isClicked[num]==-1)
-                        {
-                            nodes[i][13] += nodes[i][num][index];
-                            isClicked[num] = index;
-                        }
-                        else
-                        {
-                            nodes[i][13] -= nodes[i][num][isClicked[num]];
-                            nodes[i][13] += nodes[i][num][index];
-                            isClicked[num] = index;
-                        }
+                        nodes[i][13] += nodes[i][num][index];
                     }
                     ans[num] = index;
                     next(num);
