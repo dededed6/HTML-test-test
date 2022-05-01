@@ -264,9 +264,9 @@
                     <span >당신의 취저 멤버는</span>
                     <br>
                     <span id="resultName"></span>
-                    <button class="btn"  type="button" onclick="clickk(13,1)">맞나요?</button>
+                    <button class="btn"  type="button" onclick="clickk(13,0)">맞나요?</button>
    
-                    <button class="btn"  type="button" onclick="clickk(13,2)">아닌가요?</button>
+                    <button class="btn"  type="button" onclick="clickk(13,1)">아닌가요?</button>
             </div>
           </div>
 
@@ -385,13 +385,6 @@
                         next(num);
                         return 0;
                     }
-                    else
-                    {
-                        for(var i=0; i<nodes.length; i++)
-                        {
-                            nodes[i][13] += nodes[i][num][index];
-                        }
-                    }
                     if(num==12)
                     {
                         makeResult();
@@ -403,7 +396,7 @@
                     {
                         if(index==0)
                         {
-                            sendData();
+                            sendData(document.getElementById("resultName").innerText.split("'")[1]);
                         }
                         else
                         {
@@ -414,6 +407,11 @@
                     else if(num == 14)
                     {
                         sendData();
+                        return 0;
+                    }
+                    for(var i=0; i<nodes.length; i++)
+                    {
+                        nodes[i][13] += nodes[i][num][index];
                     }
                     ans[num] = index;
                     next(num);
@@ -443,12 +441,16 @@
                     //window.location.href = './takanelui.html';
                 }
           
-                  function sendData()
+                  function sendData(correctName)
                   {
-                      if(document.getElementById("name").value=="")
+                      if(document.getElementById("name").value=="" && correctName==null)
                       {
                           alert("멤버 이름을 적어주세요!");
                           return 0;
+                      }
+                      if(correctName!=null)
+                      {
+                        document.getElementById("name").value = correctName;
                       }
                       $.ajax({
                       url: "https://script.google.com/macros/s/AKfycbxNyXeUxXW3EXkUGfYtzHL44IYFESgBA38hNmXNpULEFHA8O5tNXGl46NmL0yhkZstafA/exec",
@@ -459,7 +461,7 @@
                       type: "POST"
                       });
                       alert("전송 완료!");
-                      window.location.href = './takanelui.html';
+                      //window.location.href = './takanelui.html';
                   }
 
                   var names = ["토키노 소라", "로보코", "아즈키", "사쿠라 미코", "호시마치 스이세이", "요조라 멜", "아키 로젠탈", "아카이 하아토", "시라카미 후부키", "나츠이로 마츠리", "미나토 아쿠아", "무라사키 시온", "나키리 아야메", "유즈키 초코", "오오조라 스바루", "오오카미 미오", "네코마타 오카유", "이누가미 코로네", "우사다 페코라", "시라누이 후레아", "시로가네 노엘", "호쇼 마린", "아마네 카나타", "키류 코코", "츠노마키 와타메", "토코야미 토와", "히메모리 루나", "유키하나 라미", "모모스즈 네네", "시시로 보탄", "오마루 폴카", "라플라스 다크니스", "타카네 루이", "하쿠이 코요리", "사카마타 클로에", "카자마 이로하", "아윤다 리스", "호시노바 무나", "이오피프틴", "쿠레이지 올리", "아냐 멜핏샤", "파볼리아 레이네", "베스티아 제타", "카엘라 코발스키아", "코보 카나에루", "모리 칼리오페", "타카나시 키아라", "니노마에 이나나스", "가우르 구라", "아멜리아 왓슨", "아이리스", "츠쿠모 사나", "세레스 파우나", "오로 크로니", "나나시 무메이", "하코스 벨즈"];
