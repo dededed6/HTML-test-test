@@ -52,7 +52,7 @@
 질문 1번: 0.키리누키 공급 많음 1.적음 2.계산X
 질문 2번: 0.fps 1.싱글 2.멀티
 */
-        var ans = [0,0,0,0,0,0,0,0,0,0,0,0,"","",""];
+        var ans = [0,0,0,0,0,0,0,0,0,0,0,0,0,""];
         var nodes = 
        [[1,1,0,0,0,0,0,0,0,0,0,0], //토키노 소라
         [1,0,0,0,0,0,0,0,0,0,0,0], //로보코
@@ -113,7 +113,7 @@
 
         function clickk(num,index)
         {
-            if(num==12)
+            if(num==13)
             {
                 sendData();
                 return true;
@@ -153,7 +153,7 @@
             $.ajax({
             url: "https://script.google.com/macros/s/AKfycbxNyXeUxXW3EXkUGfYtzHL44IYFESgBA38hNmXNpULEFHA8O5tNXGl46NmL0yhkZstafA/exec",
             data: {
-            num1 : ans[0], num2 : ans[1], num3 : ans[2], num4 : ans[3], num5 : ans[4], num6 : ans[5], num7 : ans[6], num8 : ans[7], num9 : ans[8], num10 : ans[9], num11 : ans[10], num12 : ans[11],
+            num1 : ans[0], num2 : ans[1], num3 : ans[2], num4 : ans[3], num5 : ans[4], num6 : ans[5], num7 : ans[6], num8 : ans[7], num9 : ans[8], num10 : ans[9], num11 : ans[10], num12 : ans[11], num14 : ans[12],
             num13 : document.getElementById("name").value
             },
             type: "POST"
@@ -347,6 +347,20 @@
               </div>
           </div>
 
+          <div class="container" >
+            <p >인 줄 알았죠?</p>
+             <div style="text-align: center;padding: 0;">
+                 
+                     <span >이렇게 만담하는게 좋아</span>
+                
+                 <button class="btn"  type="button" onclick="clickk(12,0)">츳코미(태클걸기)</button>
+  
+                  <button class="btn"  type="button" onclick="clickk(12,1)">보케(동네바보)</button>
+   
+                  <button class="btn"  type="button" onclick="clickk(12,2)">맛만 좋으면 돼</button>
+              </div>
+          </div>
+
           <div class="container" style="width:98vw; margin: auto; padding: 0%; display: none;">
             <p >멤버 선택하기</p>
              <div style="text-align: center;padding: 0;">
@@ -354,7 +368,7 @@
                     <span >오시멤버는 누구인가요?</span>
                
                     <input type="text" id="name" placeholder="최애멤버의 이름을 적어주세요 (etc. 아멜리아 왓슨)" style="margin-bottom: 12vh; height: 8vh; width: 80%; font-family: 굵; font-size: 3vw; text-align: center;">
-                    <input class="btn" type="submit" value="보내기" onclick="clickk(12)"></button>
+                    <input class="btn" type="submit" value="보내기" onclick="clickk(13)"></button>
             </div>
           </div>
           <style>
