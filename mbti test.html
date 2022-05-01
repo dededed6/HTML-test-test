@@ -256,6 +256,29 @@
                   <button class="btn"  type="button" onclick="clickk(12,2)">맛만 좋으면 돼</button>
               </div>
           </div>
+
+          <div class="container" style="width:98vw; margin: auto; padding: 0%; display: none;">
+            <p >결과입니다!</p>
+             <div style="text-align: center;padding: 0;">
+                
+                    <span >당신의 취저 멤버는</span>
+                    <br>
+                    <span id="resultName"></span>
+                    <button class="btn"  type="button" onclick="clickk(13,1)">맞나요?</button>
+   
+                    <button class="btn"  type="button" onclick="clickk(13,2)">아닌가요?</button>
+            </div>
+          </div>
+
+          <div class="container" style="width:98vw; margin: auto; padding: 0%; display: none;">
+            <p >이런...</p>
+             <div style="text-align: center;padding: 0;">
+                
+                    <span >정확도 개선을 도와주세요!</span>
+                    <input type="text" id="name" placeholder="최애멤버의 이름을 적어주세요 (etc. 아멜리아 왓슨)" style="margin-bottom: 12vh; height: 8vh; width: 80%; font-family: 굵; font-size: 3vw; text-align: center;">
+                    <input class="btn" type="submit" value="보내기" onclick="clickk(14)"></button>
+            </div>
+          </div>
           <style>
               body{
                 -ms-overflow-style: none;
@@ -372,8 +395,25 @@
                     if(num==12)
                     {
                         makeResult();
+                        next(num);
                         //sendData();
                         return true;
+                    }
+                    else if(num==13)
+                    {
+                        if(index==0)
+                        {
+                            sendData();
+                        }
+                        else
+                        {
+                            next(num);
+                        }
+                        return true;
+                    }
+                    else if(num == 14)
+                    {
+                        sendData();
                     }
                     ans[num] = index;
                     next(num);
@@ -399,7 +439,7 @@
                             max_index = i;
                         }
                     }
-                    alert("당신의 취저 멤버는 "+names[max_index]);
+                    document.getElementById("resultName").innerText = "'" + names[max_index] + "' 입니다!";
                     //window.location.href = './takanelui.html';
                 }
           
