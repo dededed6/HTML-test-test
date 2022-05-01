@@ -537,6 +537,12 @@
                                       nodes[i][ii][max_index] = 2;
                                       nodes[i][ii][min_index] = 0;
                                       nodes[i][ii][3 - max_index - min_index] = 1;
+                                      if(ii==4)
+                                      {
+                                        nodes[i][ii][0] *= 3;
+                                        nodes[i][ii][1] *= 3;
+                                        nodes[i][ii][2] *= 3;
+                                      }
                                   }
                                   console.log(nodes[i]);
                               }
