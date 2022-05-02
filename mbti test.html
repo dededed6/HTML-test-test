@@ -442,7 +442,7 @@
                             max_index = i;
                         }
                     }
-                    var 대충숫자 = (nodes[max_index][13]/52).toFixed(6)*100;
+                    var 대충숫자 = (nodes[max_index][13]/52*100).toFixed(3);
                     document.getElementById("resultImg").src = "images/"+max_index+".png";
                     document.getElementById("resultName").innerText = "'" + names[max_index] + "' 입니다!";
                     document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.\n이 멤버와 "+대충숫자+"% 어울립니다!";
@@ -509,18 +509,30 @@
                                 }
                                 for(var ii=0;ii<jsonData.rows[i].c.length-2;ii++)
                                 {
+                                    try
+                                    {
                                     if(ii==12)
                                     {
                                         continue;
                                     }
                                     else if(ii==13)
                                     {
-                                        nodes[num][12][jsonData.rows[i].c[ii].v]++;
+                                        if(jsonData.rows[i].c[ii].v!=null)
+                                        {
+                                            nodes[num][12][jsonData.rows[i].c[ii].v]++;
+                                        }
                                     }
                                     else
                                     {
-                                        nodes[num][ii][jsonData.rows[i].c[ii].v]++;
+                                        if(jsonData.rows[i].c[ii].v!=null)
+                                        {
+                                            nodes[num][ii][jsonData.rows[i].c[ii].v]++;
+                                        }
                                     }
+                                }catch(e)
+                                {
+                                    alert("서버 통신에 오류가 발생했습니다!\n테스트를 진행할 수 없습니다.")
+                                }
                                 }
                               }
 
@@ -558,6 +570,10 @@
                                   console.log(nodes[i]);
                               }
                               ci=userCount-1000;
+                              if(userCount<1000)
+                              {
+                                  console.log("오류가 발생했습니다!\n테스트를 진행할 수 없습니다.");
+                              }
                           });
                       });
                 }
