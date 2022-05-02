@@ -261,7 +261,9 @@
                 
                     <span style="margin-bottom: 0%;">당신의 취저 멤버는</span>
                     <br>
-                    <span id="resultName"></span>
+                    <span id="resultName" style="margin-bottom: 0%;"></span>
+                    <br>
+                    <img id="resultImg" style="height:30vh; padding-bottom: 6vh;">
                     <br>
                     <span id="resultNum" style="font-size: 2vw; margin-bottom: 0%; margin-top: 0%;"></span>
                     <br>
@@ -440,6 +442,7 @@
                             max_index = i;
                         }
                     }
+                    document.getElementById("resultImg").src = "images/"+max_index+".png";
                     document.getElementById("resultName").innerText = "'" + names[max_index] + "' 입니다!";
                     document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.";
                     //window.location.href = './takanelui.html';
