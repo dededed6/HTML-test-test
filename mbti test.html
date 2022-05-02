@@ -256,10 +256,10 @@
           </div>
 
           <div class="container" style="width:98vw; margin: auto; padding: 0%; display: none;">
-            <p >결과입니다!</p>
+            <p style="margin-bottom: 0%;padding-bottom: 0%;">결과입니다!</p>
              <div style="text-align: center;padding: 0;">
                 
-                    <span style="margin-bottom: 0%;">당신의 취저 멤버는</span>
+                    <span style="margin-bottom: 0%; margin-top: 2vh; padding-top: 0vh;">당신의 취저 멤버는</span>
                     <br>
                     <span id="resultName" style="margin-bottom: 0%;"></span>
                     <br>
@@ -442,9 +442,10 @@
                             max_index = i;
                         }
                     }
+                    var 대충숫자 = (nodes[max_index][13]/52).toFixed(6)*100;
                     document.getElementById("resultImg").src = "images/"+max_index+".png";
                     document.getElementById("resultName").innerText = "'" + names[max_index] + "' 입니다!";
-                    document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.";
+                    document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.\n이 멤버와 "+대충숫자+"% 어울립니다!";
                     //window.location.href = './takanelui.html';
                 }
           
