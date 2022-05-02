@@ -517,21 +517,15 @@
                                     }
                                     else if(ii==13)
                                     {
-                                        if(jsonData.rows[i].c[ii].v!=null)
-                                        {
-                                            nodes[num][12][jsonData.rows[i].c[ii].v]++;
-                                        }
+                                        nodes[num][12][jsonData.rows[i].c[ii].v]++;
                                     }
                                     else
                                     {
-                                        if(jsonData.rows[i].c[ii].v!=null)
-                                        {
-                                            nodes[num][ii][jsonData.rows[i].c[ii].v]++;
-                                        }
+                                        nodes[num][ii][jsonData.rows[i].c[ii].v]++;
                                     }
                                 }catch(e)
                                 {
-                                    alert("서버 통신에 오류가 발생했습니다!\n테스트를 진행할 수 없습니다.")
+                                    //alert("서버 통신에 오류가 발생했습니다!\n테스트를 진행할 수 없습니다.");
                                 }
                                 }
                               }
