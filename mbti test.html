@@ -266,10 +266,29 @@
                     <br>
                     <img id="resultImg" style="height:30vh; padding-bottom: 6vh;">
                     <br>
-                    <span id="resultNum" style="font-size: 2vw; margin-bottom: 0%; margin-top: 0%;"></span>
+                    <span id="resultNum" style="font-size: 2vw; margin-bottom: 2vh; margin-top: 0%;"></span>
                     <br>
                     <button class="btn"  type="button" style="padding-bottom: 1vh; margin-bottom: 1.5vh;" onclick="clickk(13,0)">맞나요?</button>
-                    <button class="btn"  type="button" style="margin-top: 1vh;" onclick="clickk(13,1)">아닌가요?</button>
+                    <br style="padding-bottom:8vh;">
+                    <span style="margin-bottom: 1vh; margin-top: 2vh; padding-top: 0vh;  font-size: 4vw;">이런 멤버도 어울리세요!</span>
+                    <br>
+                <div style="display:inline-block;">
+                    <img class="resultImg" style="height:20vh; padding-bottom: 0vh;">
+                    <br>
+                    <span class="resultName" style="margin-bottom: 0%; font-size: 2vw;"></span>
+                </div>
+                <div style="display:inline-block; padding-left: 3vw; padding-right: 3vw;">
+                    <img class="resultImg" style="height:20vh; padding-bottom: 0vh;">
+                    <br>
+                    <span class="resultName" style="margin-bottom: 0%; font-size: 2vw;"></span>      
+                </div>
+                <div style="display:inline-block; ">
+                    <img class="resultImg" style="height:20vh; padding-bottom: 0vh;">
+                    <br>
+                    <span class="resultName" style="margin-bottom: 0%; font-size: 2vw;"></span>      
+                </div>
+                <br style="padding-bottom:12vh;">
+                <button class="btn"  type="button" style="margin-top: 4vh;" onclick="clickk(13,1)">아닌가요?</button>
             </div>
           </div>
 
@@ -390,12 +409,9 @@
                         next(num);
                         return 0;
                     }
-                    if(num==12)
+                    else if(num==12)
                     {
-                        ans[num] = index;
                         makeResult();
-                        next(num);
-                        return true;
                     }
                     else if(num==13)
                     {
@@ -415,6 +431,18 @@
                         return 0;
                     }
                     ans[num] = index;
+                    for(var i =0;i<=3;i++)
+                    {
+                        if(i==index)
+                        {
+                            document.getElementsByClassName("btn")[num*3+i+1].style.backgroundColor = "#A8A8A8";
+                        }
+                        else
+                        {
+                            document.getElementsByClassName("btn")[num*3+i+1].style.backgroundColor = "#ffffff";
+                        }
+                    }
+
                     next(num);
                 }
           
@@ -435,20 +463,40 @@
                             nodes[i][13] += nodes[i][num][ans[num]];
                         }
                     }
-                    var max = nodes[0][13];
                     var max_index = 0;
+                    var pre_max_index = 0;
+                    var ppre_max_index = 0;
+                    var pppre_max_index = 0;
                     for(var i=1;i<nodes.length;i++)
                     {
-                        if(nodes[i][13] > max)
+                        if(nodes[i][13] > nodes[max_index][13])
                         {
-                            max = nodes[i][13];
                             max_index = i;
                         }
+                        else if(nodes[i][13] > nodes[pre_max_index][13])
+                        {
+                            pre_max_index = i;
+                        }
+                        else if(nodes[i][13] > nodes[ppre_max_index][13])
+                        {
+                            ppre_max_index = i;
+                        }
+                        else if(nodes[i][13] > nodes[pppre_max_index][13])
+                        {
+                            pppre_max_index = i;
+                        }
                     }
-                    var 대충숫자 = (nodes[max_index][13]/40*100).toFixed(3);
+                    var 대충숫자 = (nodes[max_index][13]/40*100).toFixed(0);
                     document.getElementById("resultImg").src = "images/"+max_index+".png";
                     document.getElementById("resultName").innerText = "'" + names[max_index] + "' 입니다!";
                     document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.\n이 멤버와 "+대충숫자+"% 어울립니다!";
+                    document.getElementsByClassName("resultName")[0].innerText = names[pre_max_index]+"\n"+(nodes[pre_max_index][13]/40*100).toFixed(0) + "% 어울립니다!";
+                    document.getElementsByClassName("resultName")[1].innerText = names[ppre_max_index]+"\n"+(nodes[ppre_max_index][13]/40*100).toFixed(0) + "% 어울립니다!";
+                    document.getElementsByClassName("resultName")[2].innerText = names[pppre_max_index]+"\n"+(nodes[pppre_max_index][13]/40*100).toFixed(0) + "% 어울립니다!";
+                    document.getElementsByClassName("resultImg")[0].src = "images/"+pre_max_index+".png";
+                    document.getElementsByClassName("resultImg")[1].src = "images/"+ppre_max_index+".png";
+                    document.getElementsByClassName("resultImg")[2].src = "images/"+pppre_max_index+".png";
+
                     //window.location.href = './takanelui.html';
                 }
           
