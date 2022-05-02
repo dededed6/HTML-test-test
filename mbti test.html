@@ -414,10 +414,6 @@
                         sendData();
                         return 0;
                     }
-                    for(var i=0; i<nodes.length; i++)
-                    {
-                        nodes[i][13] += nodes[i][num][index];
-                    }
                     ans[num] = index;
                     next(num);
                 }
@@ -430,8 +426,15 @@
                       window.scroll({top : target_top, behavior: 'smooth'});
                   }
           
-                  function makeResult()
-                  {
+                function makeResult()
+                {
+                    for(var num=0;num<13;num++)
+                    {
+                        for(var i=0; i<nodes.length; i++)
+                        {
+                            nodes[i][13] += nodes[i][num][ans[num]];
+                        }
+                    }
                     var max = nodes[0][13];
                     var max_index = 0;
                     for(var i=1;i<nodes.length;i++)
@@ -442,7 +445,7 @@
                             max_index = i;
                         }
                     }
-                    var 대충숫자 = (nodes[max_index][13]/38*100).toFixed(3);
+                    var 대충숫자 = (nodes[max_index][13]/40*100).toFixed(3);
                     document.getElementById("resultImg").src = "images/"+max_index+".png";
                     document.getElementById("resultName").innerText = "'" + names[max_index] + "' 입니다!";
                     document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.\n이 멤버와 "+대충숫자+"% 어울립니다!";
