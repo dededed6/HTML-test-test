@@ -367,7 +367,7 @@
                       setTimeout(function() { numberCount(); }, 1400);
                   };
 
-                var ci=0;
+                var ci=userCount-1000;
                 function numberCount()
                 {
                     let txt = document.getElementById("number");
@@ -378,7 +378,7 @@
                             ci++;
                             numberCount();
                         }
-                  }, 50/(userCount-ci));
+                  }, 50/(userCount));
                 }
 
                 function clickk(num,index)
@@ -553,6 +553,7 @@
                                   }
                                   console.log(nodes[i]);
                               }
+                              ci=userCount-1000;
                           });
                       });
                 }
