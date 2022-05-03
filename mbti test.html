@@ -264,7 +264,7 @@
                     <br>
                     <span id="resultName" style="margin-bottom: 0%;"></span>
                     <br>
-                    <img id="resultImg" style="height:30vh; padding-bottom: 6vh;">
+                    <img id="resultImg" style="height:30vh; padding-top: 2vh;">
                     <br>
                     <span id="resultNum" style="font-size: 2vw; margin-bottom: 2vh; margin-top: 0%;"></span>
                     <br>
@@ -463,9 +463,10 @@ function numberCount() {
           
                 function makeResult()
                 {
-                    for(var num=0;num<13;num++)
+                    for(var i=0; i<nodes.length; i++)
                     {
-                        for(var i=0; i<nodes.length; i++)
+                        nodes[i][13] = 0;
+                        for(var num=0;num<13;num++)
                         {
                             nodes[i][13] += nodes[i][num][ans[num]];
                         }
@@ -502,10 +503,9 @@ function numberCount() {
                             }
                         }
                     }
-                    var 대충숫자 = (nodes[max_index][13]/40*100).toFixed(0);
                     document.getElementById("resultImg").src = "images/"+max_index+".png";
                     document.getElementById("resultName").innerText = "'" + names[max_index] + "' 입니다!";
-                    document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.\n이 멤버와 "+대충숫자+"% 어울립니다!";
+                    document.getElementById("resultNum").innerText = names_nums[max_index] + "명이 이 멤버에 취저당했습니다.\n이 멤버와 "+(nodes[max_index][13]/40*100).toFixed(0)+"% 어울립니다!";
                     document.getElementsByClassName("resultName")[0].innerText = names[pre_max_index]+"\n"+(nodes[pre_max_index][13]/40*100 - Math.random()*5 - 1).toFixed(0) + "% 어울립니다!";
                     document.getElementsByClassName("resultName")[1].innerText = names[ppre_max_index]+"\n"+(nodes[ppre_max_index][13]/40*100 - Math.random()*5 - 6).toFixed(0) + "% 어울립니다!";
                     document.getElementsByClassName("resultName")[2].innerText = names[pppre_max_index]+"\n"+(nodes[pppre_max_index][13]/40*100 - Math.random()*5 - 11).toFixed(0) + "% 어울립니다!";
