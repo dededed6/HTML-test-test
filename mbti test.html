@@ -388,19 +388,26 @@
                       setTimeout(function() { numberCount(); }, 1400);
                   };
 
-                var ci=userCount-1000;
-                function numberCount()
-                {
-                    let txt = document.getElementById("number");
-                    setTimeout(function() {
-                        txt.innerText = "지금까지 "+ci+"명이 취향저격 당했습니다.";
-                        if(ci<=userCount)
-                        {
-                            ci++;
-                            numberCount();
-                        }
-                  }, 1);
-                }
+var ci=0;
+let txt = document.getElementById("number");
+// 랜덤 값을 생성하는 함수, userCount의 자릿수 ~ userCount 까지 랜덤 정수 생성
+const countEvent = () => {
+  // 자릿수를 구합니다 예를들어, 5102명이면 1000을 리턴합니다
+  let minCount = 10**Number(userCount.toString().length - 1)
+  // minCount <= ci < userCount 사이의 값을 출력합니다
+  ci = Math.floor(Math.random() * (userCount-minCount) + minCount);
+  txt.innerText = "지금까지 " + ci + "명이 취향저격 당했습니다."
+}
+
+function numberCount() {
+  let radomCount = setInterval(countEvent, 10)
+  // 3초 뒤 랜덤 값 생성을 중단하고 원래 수를 출력합니다
+  setTimeout(function(){
+    clearInterval(radomCount);
+    txt.innerHTML = "지금까지 " + userCount + "명이 취향저격 당했습니다.";
+  }, 3000)
+}
+//Bhanjo님 좋은 코드 감사합니다.
 
                 function clickk(num,index)
                 {
@@ -621,7 +628,7 @@
                                         nodes[i][ii][2] *= 8;
                                       }
                                   }
-                                  console.log(nodes[i]);
+                                  //console.log(nodes[i]);
                               }
                               ci=userCount-1000;
                               if(userCount<1000)
