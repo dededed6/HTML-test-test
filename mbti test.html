@@ -464,26 +464,35 @@
                         }
                     }
                     var max_index = 0;
-                    var pre_max_index = 0;
-                    var ppre_max_index = 0;
-                    var pppre_max_index = 0;
+                    var pre_max_index = -1;
+                    var ppre_max_index = -1;
+                    var pppre_max_index = -1;
                     for(var i=1;i<nodes.length;i++)
                     {
                         if(nodes[i][13] > nodes[max_index][13])
                         {
                             max_index = i;
-                        }
-                        else if(nodes[i][13] > nodes[pre_max_index][13])
-                        {
-                            pre_max_index = i;
-                        }
-                        else if(nodes[i][13] > nodes[ppre_max_index][13])
-                        {
-                            ppre_max_index = i;
-                        }
-                        else if(nodes[i][13] > nodes[pppre_max_index][13])
-                        {
-                            pppre_max_index = i;
+                        } else {
+                            if(pre_max_index==-1)
+                            {
+                                pre_max_index = i;
+                            } else if(nodes[i][13] > nodes[pre_max_index][13]) {
+                                pre_max_index = i;
+                            } else {
+                                if(ppre_max_index==-1)
+                                {
+                                    ppre_max_index = i;
+                                } else if(nodes[i][13] > nodes[ppre_max_index][13]) {
+                                    ppre_max_index = i;
+                                } else {
+                                    if(pppre_max_index==-1)
+                                    {
+                                        pppre_max_index = i;
+                                    } else if(nodes[i][13] > nodes[pppre_max_index][13]) {
+                                        pppre_max_index = i;
+                                    }
+                                }
+                            }
                         }
                     }
                     var 대충숫자 = (nodes[max_index][13]/40*100).toFixed(0);
